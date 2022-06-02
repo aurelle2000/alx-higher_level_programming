@@ -1,2 +1,2 @@
 #!/usr/bin/python3
-import printing
+__import__('os').system("echo '#pythoniscool'")
