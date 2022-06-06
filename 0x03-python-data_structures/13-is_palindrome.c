@@ -1,39 +1,72 @@
-#include <stdio.h>
 #include "lists.h"
 
 /**
- * is_palindrome - that checks if a singly linked list is a palindrome.
- * @head: pointer to pointer 
- * Return: 0 if it is not a palindrome, 1 if it is a palindrome
+ * reverse_listint - reverses a linked list
+ * @head: pointer to the first node in the list
+ *
+ * Return: pointer to the first node in the new list
  */
+void reverse_listint(listint_t **head)
+{
+	listint_t *prev = NULL;
+	listint_t *current = *head;
+	listint_t *next = NULL;
 
+	while (current)
+	{
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
+	}
+
+	*head = prev;
+}
+
+/**
+ * is_palindrome - checks if a linked list is a palindrome
+ * @head: double pointer to the linked list
+ *
+ * Return: 1 if it is, 0 if not
+ */
 int is_palindrome(listint_t **head)
 {
-	int list[1000000], i = 0, j = 0, k = 0;
-	listint_t *temp;
+	listint_t *slow = *head, *fast = *head, *temp = *head, *dup = NULL;
 
-	if (head == NULL || (*head) == NULL)
+	if (*head == NULL || (*head)->next == NULL)
 		return (1);
-	temp = *head;
-	while (temp)
+
+	while (1)
 	{
-		list[i] = temp->n;
-		i++;
-		temp = temp->next;
+		fast = fast->next->next;
+		if (!fast)
+		{
+			dup = slow->next;
+			break;
+		}
+		if (!fast->next)
+		{
+			dup = slow->next->next;
+			break;
+		}
+		slow = slow->next;
 	}
-	i--;
 
-	if (i % 2 != 0)
-		k = (i + 1) / 2;
-	else
-		k = i / 2;
+	reverse_listint(&dup);
 
-	while (j < k)
+	while (dup && temp)
 	{
-		if (list[j] != list[i])
+		if (temp->n == dup->n)
+		{
+			dup = dup->next;
+			temp = temp->next;
+		}
+		else
 			return (0);
-		i--;
-		j++;
 	}
-	return (1);
+
+	if (!dup)
+		return (1);
+
+	return (0);
 }
