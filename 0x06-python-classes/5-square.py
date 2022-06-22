@@ -1,39 +1,32 @@
 #!/usr/bin/python3
-"""
-This module defines a Square class
-
-Its implements value and type checks for its attributes
-"""
-
-
 class Square:
-    """Square implementation
-    """
-    def __init__(self, size=0):
-        self.__size = size
+        __size = None
 
-    @property
-    def size(self):
-        return self.__size
+            def __init__(self, size=0):
+                        self.__size = size
+                                if type(size) != int:
+                                                raise Exception("size must be an integer")
+                                                    if size < 0:
+                                                                    raise Exception("size must be >= 0")
 
-    @size.setter
-    def size(self, size):
-        if type(size) != int:
-            raise TypeError('size must be an integer')
-        elif size < 0:
-            raise ValueError('size must be >= 0')
-        self.__size = size
+                                                                    def area(self):
+                                                                                return (self.__size * self.__size)
 
-    def area(self):
-        """calculates the square area
-        """
-        return (self.__size ** 2)
+                                                                                def set_size(self, value):
+                                                                                            if type(value) != int:
+                                                                                                            raise Exception("size must be an integer")
+                                                                                                                self.__size = value
 
-    def my_print(self):
-        """prints a square  with the corresponding size
-        """
-        if (self.__size == 0):
-            print('')
+                                                                                                                    def get_size(self):
+                                                                                                                                return self.__size
 
-        for l in range(self.__size):
-            print('#' * self.__size)
+                                                                                                                                size = property(get_size, set_size)
+
+                                                                                                                                    def my_print(self):
+                                                                                                                                                if self.__size == 0:
+                                                                                                                                                                print()
+                                                                                                                                                else:
+                                                                                                                                                                for i in range(self.__size):
+                                                                                                                                                                                    for i in range(self.__size):
+                                                                                                                                                                                                            print('#', end='')
+                                                                                                                                                                                                                            print()
