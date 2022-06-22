@@ -1,32 +1,38 @@
 #!/usr/bin/python3
+'''class Square'''
+
+
 class Square:
-        __size = None
+            '''Represents a Square'''
 
-        def __init__(self, size=0):
-                self.__size = size
-                if type(size) != int:
-                        raise Exception("size must be an integer")
-                if size < 0:
-                        raise Exception("size must be >= 0")
+                def __init__(self, size=0):
+                                '''Init the data with error handling.'''
+                                        self.size = size
 
-        def area(self):
-                return (self.__size * self.__size)
+                                            def area(self):
+                                                            '''Returns the square area'''
+                                                                    return (self.__size * self.__size)
 
-        def set_size(self, value):
-                if type(value) != int:
-                        raise Exception("size must be an integer")
-                self.__size = value
+                                                                @property
+                                                                    def size(self):
+                                                                                    '''Returns size of Square instance'''
+                                                                                            return self.__size
 
-        def get_size(self):
-                return self.__size
+                                                                                        @size.setter
+                                                                                            def size(self, value):
+                                                                                                            '''Sets size attribute'''
+                                                                                                                    if not isinstance(value, int):
+                                                                                                                                        raise TypeError('size must be an integer')
+                                                                                                                    elif value < 0:
+                                                                                                                                        raise ValueError('size must be >= 0')
+                                                                                                                                        self.__size = value
 
-        size = property(get_size, set_size)
-
-        def my_print(self):
-                if self.__size == 0:
-                        print()
-                else:
-                        for i in range(self.__size):
-                                for i in range(self.__size):
-                                        print('#', end='')
-                                print()
+                                                                                                                                            def my_print(self):
+                                                                                                                                                            '''Prints in stdout the square with #'''
+                                                                                                                                                                    if self.__size > 0:
+                                                                                                                                                                                        for i in range(self.__size):
+                                                                                                                                                                                                                for j in range(self.__size):
+                                                                                                                                                                                                                                            print('#', end='')
+                                                                                                                                                                                                                                                            print()
+                                                                                                                                                                                                                else:
+                                                                                                                                                                                                                                    print()
