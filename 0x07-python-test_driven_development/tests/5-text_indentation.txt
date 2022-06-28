@@ -1,0 +1,63 @@
+# 5-text_indentation.txt
+==================================
+ How to Use 5-text_indentation.py
+==================================
+
+Using function called ''text_indentation()''.
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text_indentation(6)
+Traceback (most recent call last):
+          ...
+TypeError: text must be a string
+
+>>> text_indentation("   ?:.   ")
+?
+<BLANKLINE>
+:
+<BLANKLINE>
+.
+<BLANKLINE>
+
+""" Test no delim """
+>>> text_indentation("My Name is")
+My Name is
+
+""" Test newline 3 """
+>>> text_indentation("Yup\n\n")
+Yup
+<BLANKLINE>
+
+>>> text_indentation(" .??:?. “)
+.
+<BLANKLINE>
+?
+<BLANKLINE>
+?
+<BLANKLINE>
+:
+<BLANKLINE>
+?
+<BLANKLINE>
+.
+<BLANKLINE>
+
+>>> text_indentation("Plus semper voluptatis?     Teneo, inquit, finem illi videri nihil dolere.")
+Plus semper voluptatis?
+<BLANKLINE>
+Teneo, inquit, finem illi videri nihil dolere.
+<BLANKLINE>
+
+Types
+==========
+
+""" 'text' is string """
+>>> text_indentation("Hola")
+Hola
+
+""" 'text' is not str """
+>>> text_indentation(5)
+Traceback (most recent call last):
+          ...
+TypeError: text must be a string
