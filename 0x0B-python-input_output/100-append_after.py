@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 """append after module"""
-
-
 def append_after(filename="", search_string="", new_string=""):
-    
     """append a text after a substring line"""
 
     with open(filename, 'r') as f:
